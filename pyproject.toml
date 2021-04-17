@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "crisis-summary"
+name = "crisis"
 version = "0.1.0"
 description = "Summarization of the latest tweets for crisis managers using GPT-3."
 authors = ["malyvsen <5940672+malyvsen@users.noreply.github.com>"]
