@@ -8,9 +8,13 @@ license = "GPLv3"
 [tool.poetry.dependencies]
 python = "^3.8"
 openai = "^0.6.3"
+bs4 = "^0.0.1"
+xmltodict = "^0.12.0"
+streamlit = "^0.80.0"
 
 [tool.poetry.dev-dependencies]
 jupyter = "^1.0.0"
+black = {version = "^20.8b1", allow-prereleases = true}
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
