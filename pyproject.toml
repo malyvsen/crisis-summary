@@ -10,6 +10,7 @@ python = "^3.8"
 openai = "^0.6.3"
 
 [tool.poetry.dev-dependencies]
+streamlit = "^0.80.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
