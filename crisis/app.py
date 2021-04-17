@@ -21,9 +21,7 @@ engine = st.sidebar.selectbox(
     index=(engine_ids.index("davinci") if "davinci" in engine_ids else 0),
 )
 
-n_answers = st.sidebar.slider(
-    "Number of answers to generate", min_value=1, max_value=5, step=1, value=1
-)
+
 temperature = st.sidebar.slider(
     "Model temperature", min_value=0.0, max_value=1.0, step=0.05, value=0.15
 )
@@ -35,19 +33,28 @@ max_tokens = st.sidebar.slider(
 topic = st.selectbox("What topic interests you?", options=[r.name for r in rss_sources])
 
 
-question = st.text_area("What question do you want to ask GPT-3?")
+question = st.text_area(
+    "What question do you want to ask GPT-3?",
+    value="The detailed description of what happened is:",
+)
 
 submit_button = st.button("Submit")
 
 if submit_button:
     f"""Submitted on {datetime.now()}"""
 
-    response = bkd.GPT3Api(
+    response, most_important = bkd.GPT3Api(
         api_key=openai_key,
         engine=engine,
         temperature=temperature,
         max_tokens=max_tokens,
     ).get_summarization(topic, question)
+
+    f"""**Response**: *{response}*"""
+
+    """Top 3 tweets that GPT-3 found the most important:"""
+    for t in most_important:
+        t
 
 
 else:
