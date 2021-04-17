@@ -17,7 +17,9 @@ def prompt(
         text = tweet.title
         author = tweet.user
         formatted_time = tweet.time.strftime("At %H:%M on %d %b %Y")
-        docs.append("{} user {} tweeted: {}".format(formatted_time, author, text))
+        docs.append(
+            "{} user **@{}** tweeted: *{}*".format(formatted_time, author, text)
+        )
 
     result = openai.Answer.create(
         model=model,

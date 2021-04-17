@@ -3,7 +3,7 @@ from crisis import backend as bkd, rss_sources
 import streamlit as st
 import openai
 
-st.title("Crisis on Infinite Tweets")
+st.title("Crisis on Infinite Tweets!")
 
 
 st.sidebar.write("Settings")
@@ -52,7 +52,7 @@ if submit_button:
 
     f"""**Response**: *{response}*"""
 
-    """Top 3 tweets that GPT-3 found the most important:"""
+    """**Top 3 tweets that GPT-3 found the most important:**"""
     for t in most_important:
         t
 
