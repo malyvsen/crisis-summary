@@ -18,4 +18,11 @@ rss_sources = [
             "https://rss.app/feeds/0Y81bZMK48xt9Tzm.xml",
         ],
     ),
+    RssSource(
+        name="Cox's Bazar fire",
+        urls=[
+            "https://rss.app/feeds/jejLT0LsCi1cpjGa.xml",
+            "https://rss.app/feeds/SWGqKhuZmCGocVUP.xml",
+        ],
+    ),
 ]
