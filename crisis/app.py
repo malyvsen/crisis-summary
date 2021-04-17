@@ -1,5 +1,5 @@
 from datetime import datetime
-
+from crisis import backend as bkd, rss_sources
 import streamlit as st
 import openai
 
@@ -8,9 +8,12 @@ st.title("Crisis on Infinite Tweets")
 
 st.sidebar.write("Settings")
 openai_key = st.sidebar.text_input("OpenAI API key", type="password")
+
 openai.api_key = openai_key
+
 engines = openai.Engine.list()
 engine_ids = [e["id"] for e in engines["data"]]
+
 
 engine = st.sidebar.selectbox(
     "Model engine",
@@ -28,16 +31,23 @@ max_tokens = st.sidebar.slider(
     "Maximal answer length", min_value=1, max_value=512, value=256
 )
 
-
 """Search RSS feeds and summarize info through GPT-3!"""
-st.selectbox("What topic interests you?", options=["foo", "bar", "gpt-3"])
-search_phrase = st.text_area("What question do you want to ask GPT-3?")
+topic = st.selectbox("What topic interests you?", options=[r.name for r in rss_sources])
+
+
+question = st.text_area("What question do you want to ask GPT-3?")
 
 submit_button = st.button("Submit")
 
 if submit_button:
-    f"""{datetime.now()}"""
-    """Submitted!"""
+    f"""Submitted on {datetime.now()}"""
+
+    response = bkd.GPT3Api(
+        api_key=openai_key,
+        engine=engine,
+        temperature=temperature,
+        max_tokens=max_tokens,
+    ).get_summarization(topic, question)
 
 
 else:
