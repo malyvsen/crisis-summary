@@ -52,7 +52,7 @@ if submit_button:
 
     f"""**Response**: *{response}*"""
 
-    """**Top 3 tweets most relevant tweets:**"""
+    """**Top 3 most relevant tweets:**"""
     for t in most_important:
         t
 
