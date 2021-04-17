@@ -28,17 +28,12 @@ def prompt(
         temperature=temperature,
         examples_context="In 2017, U.S. life expectancy was 78.6 years.",
         examples=[["What is human life expectancy in the United States?", "78 years."]],
-        max_rerank=20,
+        max_rerank=n_most_important,
         stop=["\n", "<|endoftext|>"],
         max_tokens=max_tokens,
     )
 
-    most_important = [
-        x.text
-        for x in sorted(result.selected_documents, key=lambda x: x.score, reverse=True)[
-            :n_most_important
-        ]
-    ]
+    most_important = [x.text for x in result.selected_documents]
     return result.answers[0], most_important
 
 
