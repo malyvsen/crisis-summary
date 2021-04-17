@@ -1,5 +1,5 @@
 from datetime import datetime
-from crisis import Feed, Tweet
+from crisis import Feed, Tweet, RssSource, rss_sources
 
 
 def test_from_url():
@@ -18,3 +18,8 @@ def test_union():
     assert Feed.union(Feed(tweets=[hi, hello]), Feed(tweets=[hi, cow])) == Feed(
         tweets=[hi, hello, cow]
     )
+
+
+def test_from_rss_source():
+    feed = Feed.from_rss_source(rss_sources[0])
+    assert len(feed.tweets) > 25

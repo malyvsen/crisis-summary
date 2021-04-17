@@ -2,12 +2,17 @@ from typing import List
 from dataclasses import dataclass
 import requests
 import xmltodict
+from crisis.rss_source import RssSource
 from crisis.tweet import Tweet
 
 
 @dataclass(frozen=True)
 class Feed:
     tweets: List[Tweet]
+
+    @classmethod
+    def from_rss_source(cls, source: RssSource):
+        return cls.union(*[cls.from_rss_url(url) for url in source.urls])
 
     @classmethod
     def from_rss_url(cls, url: str):
