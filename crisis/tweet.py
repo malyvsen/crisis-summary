@@ -3,7 +3,7 @@ from datetime import datetime
 from bs4 import BeautifulSoup
 
 
-@dataclass
+@dataclass(frozen=True)
 class Tweet:
     title: str
     description: str

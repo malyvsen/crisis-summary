@@ -5,7 +5,7 @@ import xmltodict
 from crisis.tweet import Tweet
 
 
-@dataclass
+@dataclass(frozen=True)
 class Feed:
     tweets: List[Tweet]
 
@@ -20,4 +20,14 @@ class Feed:
                 Tweet.from_rss(item)
                 for item in xmltodict.parse(rss_text)["rss"]["channel"]["item"]
             ]
+        )
+
+    @classmethod
+    def union(cls, *feeds):
+        return cls(
+            tweets=sorted(
+                set.union(*[set(feed.tweets) for feed in feeds]),
+                key=lambda tweet: tweet.time,
+                reverse=True,
+            )
         )
