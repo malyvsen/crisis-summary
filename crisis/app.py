@@ -3,7 +3,7 @@ from crisis import backend as bkd, rss_sources
 import streamlit as st
 import openai
 
-st.title("Crisis on Infinite Tweets!")
+st.title("Crisis of Infinite Tweets!")
 
 
 st.sidebar.write("Settings")
@@ -34,8 +34,8 @@ topic = st.selectbox("What topic interests you?", options=[r.name for r in rss_s
 
 
 question = st.text_area(
-    "What question do you want to ask GPT-3?",
-    value="The detailed description of what happened is:",
+    "What do you want to know?",
+    value="What is the situation?",
 )
 
 submit_button = st.button("Submit")
@@ -52,7 +52,7 @@ if submit_button:
 
     f"""**Response**: *{response}*"""
 
-    """**Top 3 tweets that GPT-3 found the most important:**"""
+    """**Top 3 tweets most relevant tweets:**"""
     for t in most_important:
         t
 
