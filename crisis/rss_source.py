@@ -25,4 +25,10 @@ rss_sources = [
             "https://rss.app/feeds/SWGqKhuZmCGocVUP.xml",
         ],
     ),
+    RssSource(
+        name="Coronavirus (mid-March 2020)",
+        urls=[
+            "https://rss.app/feeds/qvVNjfsNEqF1KJjR.xml",
+        ],
+    ),
 ]
