@@ -9,6 +9,10 @@ st.title("Crisis of Infinite Tweets!")
 st.sidebar.write("Settings")
 openai_key = st.sidebar.text_input("OpenAI API key", type="password")
 
+if openai_key == "":
+    st.sidebar.write("""Please enter the OpenAI key to continue!""")
+    st.stop()
+
 openai.api_key = openai_key
 
 engines = openai.Engine.list()
